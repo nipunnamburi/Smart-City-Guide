@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Place</title>
+</head>
+<body>
+
+<h2>Edit Place</h2>
+
+<form th:action="@{'/admin/edit/' + ${place.id}}" method="post">
+
+    <label>Name</label><br>
+    <input type="text" name="name" th:value="${place.name}" required><br><br>
+
+    <label>Type</label><br>
+    <select name="type">
+        <option value="hotel" th:selected="${place.type == 'hotel'}">Hotel</option>
+        <option value="restaurant" th:selected="${place.type == 'restaurant'}">Restaurant</option>
+        <option value="attraction" th:selected="${place.type == 'attraction'}">Attraction</option>
+    </select><br><br>
+
+    <label>City</label><br>
+    <input type="text" name="city" th:value="${place.city}" required><br><br>
+
+    <label>Address</label><br>
+    <input type="text" name="address" th:value="${place.address}"><br><br>
+
+    <label>Description</label><br>
+    <textarea name="description" th:text="${place.description}"></textarea><br><br>
+
+    <button type="submit">Update</button>
+</form>
+
+</body>
+</html>

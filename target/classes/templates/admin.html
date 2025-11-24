@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Dashboard</title>
+    <style>
+        body { font-family: Arial; padding:20px; }
+        table { width:100%; border-collapse: collapse; }
+        th, td { padding:10px; border:1px solid #ccc; }
+        th { background:#eee; }
+    </style>
+</head>
+<body>
+
+<h1>Admin Dashboard</h1>
+
+<a href="/admin/add">Add New Place</a>
+<hr>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>City</th>
+        <th>Actions</th>
+    </tr>
+
+    <tr th:each="p : ${places}">
+        <td th:text="${p.id}"></td>
+        <td th:text="${p.name}"></td>
+        <td th:text="${p.type}"></td>
+        <td th:text="${p.city}"></td>
+        <td>
+            <a th:href="'/admin/edit/' + ${p.id}">Edit</a> |
+            <a th:href="'/admin/delete/' + ${p.id}"
+               onclick="return confirm('Delete this item?')">Delete</a>
+        </td>
+    </tr>
+
+</table>
+
+</body>
+</html>
